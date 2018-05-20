@@ -1,0 +1,33 @@
+package com.drug.store.service;
+
+import com.drug.store.pojo.AreaArticle;
+import com.drug.store.util.Pager;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * com.drug.store.service
+ *
+ * @desc
+ * @author:EumJi
+ * @year: 2016
+ * @month: 10
+ * @day: 24
+ * @time: 2016/10/24
+ */
+public interface ArticleService {
+
+    int insertArticle(AreaArticle article);
+
+    List<AreaArticle> getAllAreaArticleList(Pager<AreaArticle> pager, Map<String, Object> paramMap);
+
+    List<AreaArticle> getPartAreaArticleList(Pager<AreaArticle> pager, Map<String, Object> paramMap);
+
+    AreaArticle getArticleById(String articleId);
+
+    int editArticle(AreaArticle article);
+
+    int deleteArticle(String[] articles);
+}
