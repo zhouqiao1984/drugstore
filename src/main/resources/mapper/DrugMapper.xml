@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.drug.store.mapper.DrugMapper">
+
+	
+<!-- 	<select id="validateManager" parameterType="com.drug.store.pojo.Manager" resultType="int"> -->
+<!-- 		select count(1) from t_manager where userName= #{userName} and password = #{password}	 -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="getManagerInfo" parameterType="com.drug.store.pojo.Manager" resultType="com.drug.store.pojo.Manager"> -->
+<!-- 		select * from t_manager where userName= #{userName} and password = #{password}	 -->
+<!-- 	</select> -->
+
+	<select id="getDrugCount" resultType="int">
+		SELECT  count(*)  FROM  d_drug
+	</select>
+
+	<select id="getDrugList" resultType="com.drug.store.bean.Drug">
+		SELECT
+			d_drug.*
+		FROM
+			d_drug
+		ORDER BY	
+			d_drug.Id ASC
+		LIMIT #{start},#{limit}
+	</select>
+
+	<insert id="insertDrug" >
+		INSERT into d_drug (name,price,description,remark,creator,createDate,state) VALUES(#{name},#{price},#{description},#{remark},#{creator},#{createDate},1)
+	</insert>
+
+
+<!-- 	<delete id="deleteDrugs" parameterType="java.lang.String"> -->
+<!-- 		DELETE FROM t_user WHERE Id in -->
+<!-- 		<foreach collection="array" item="id" open="(" separator="," close=")"> -->
+<!-- 			#{id} -->
+<!-- 		</foreach> -->
+<!-- 	</delete> -->
+
+<!-- 	<select id="getSuperDrugCount" resultType="int"> -->
+<!-- 		SELECT -->
+<!-- 			COUNT(*) -->
+<!-- 		FROM -->
+<!-- 			t_user -->
+<!-- 		WHERE -->
+<!-- 			t_user.Id IN ( -->
+<!-- 				SELECT -->
+<!-- 					t_userrole.UserId -->
+<!-- 				FROM -->
+<!-- 					t_userrole -->
+<!-- 				WHERE -->
+<!-- 					t_userrole.UserRoleTypeId = 3 -->
+<!-- 			) -->
+<!-- 	</select> -->
+<!-- 	<select id="getSuperDrugList" resultType="com.drug.store.pojo.User"> -->
+<!-- 		SELECT -->
+<!-- 	t_user.*, t_userrole.UserRoleTypeId -->
+<!-- FROM -->
+<!-- 	t_user, -->
+<!-- 	t_userrole -->
+<!-- WHERE -->
+<!-- 	t_user.Id = t_userrole.UserId -->
+<!-- AND t_user.Id IN ( -->
+<!-- 	SELECT -->
+<!-- 		t_userrole.UserId -->
+<!-- 	FROM -->
+<!-- 		t_userrole -->
+<!-- 	WHERE -->
+<!-- 		t_userrole.UserRoleTypeId = 3 -->
+<!-- ) -->
+<!-- ORDER BY -->
+<!-- 	t_user.Id ASC -->
+<!-- LIMIT #{start},#{limit} -->
+<!-- 	</select> -->
+
+<!-- 	<select id="getAreaDrugsCount" resultType="int"> -->
+<!-- 		SELECT -->
+<!-- 			COUNT(*) -->
+<!-- 		FROM -->
+<!-- 			t_user -->
+<!-- 		WHERE -->
+<!-- 			t_user.Id IN ( -->
+<!-- 				SELECT -->
+<!-- 					t_userrole.UserId -->
+<!-- 				FROM -->
+<!-- 					t_userrole -->
+<!-- 				WHERE -->
+<!-- 					t_userrole.UserRoleTypeId = 4 -->
+<!-- 			) -->
+<!-- 	</select> -->
+
+<!-- 	<select id="getAreaDrugsList" resultType="com.drug.store.pojo.User"> -->
+<!-- 		SELECT -->
+<!-- 			t_user.*, t_userrole.UserRoleTypeId -->
+<!-- 		FROM -->
+<!-- 			t_user, -->
+<!-- 			t_userrole -->
+<!-- 		WHERE -->
+<!-- 			t_user.Id = t_userrole.UserId -->
+<!-- 		AND t_user.Id IN ( -->
+<!-- 			SELECT -->
+<!-- 				t_userrole.UserId -->
+<!-- 			FROM -->
+<!-- 				t_userrole -->
+<!-- 			WHERE -->
+<!-- 				t_userrole.UserRoleTypeId = 4 -->
+<!-- 		) -->
+<!-- 		ORDER BY -->
+<!-- 			t_user.Id ASC -->
+<!-- 			LIMIT #{start},#{limit} -->
+<!-- 	</select> -->
+</mapper>

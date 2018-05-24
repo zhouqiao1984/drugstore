@@ -1,0 +1,79 @@
+<div class="bg-light lter b-b wrapper-sm">
+    <h1 class="m-n font-thin h5 my-rooms ">
+        您当前所在的位置：
+        <a ui-sref="app.drug.drugInfo" class="my-address">药品信息管理</a>
+        &nbsp;<i class="fa fa-lg fa-angle-right"></i>&nbsp;
+        <a ui-sref="app.drug.addDrug" class="my-address">添加药品</a>
+    </h1>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default text-center" ng-controller="AddDrugCtrl">
+        <form name="form" style="border: 1px solid green; padding: 10px; " class="text-center">
+
+            <div class="form-group">
+                <label class="col-sm-5 control-label no-padding-right text-right my-label">药品名称：</label>
+                <div class="col-sm-3 my-input-wrapper">
+                    <input type="text" class="form-control" placeholder="请输入药品名称"   ng-model="drug.name" required>
+                    <span>*</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label no-padding-right text-right my-label">价格：</label>
+                <div class="col-sm-3 my-input-wrapper">
+                    <input type="text" class="form-control" placeholder="请输入价格"  ng-model="drug.price" required>
+                    <span>*</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label no-padding-right text-right my-label">药品描述：</label>
+                <div class="col-sm-3 my-input-wrapper">
+                    <input type="text"  class="form-control" placeholder="请输入药品描述"  ng-model="drug.description" required>
+                    <span>*</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            
+
+            <div class="col-sm-12">
+
+                <button type="reset" class="btn btn-default"  ng-click="reset()">
+                    <i class="fa fa-close ace-icon bigger-110"></i>
+                    取消
+                </button>
+                <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="form.$invalid">
+                    <i class="fa fa-check ace-icon bigger-110"></i>
+                    保存
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+        </form>
+    </div>
+    <!--添加成功提示框-->
+    <div>
+        <script type="text/ng-template" id="addEnd.html" >
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    提示
+                    <span class="pull-right my-cancel">
+                                <i class="fa fa-times bigger-120 fa-lg" ng-click="cancel()"></i>
+                            </span>
+                </h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="my-modal-content">
+                    <!--<i class="fa fa-info-circle fa-3x text-warning warning-icon"></i>-->
+                    <i class="fa fa-smile-o fa-3x text-success" ng-if="flag === 1"></i>
+                    <i class="fa fa-frown-o fa-3x text-warning" ng-if="flag === 2"></i>
+                    &nbsp;&nbsp;{{message}}
+                </div>
+
+            </div>
+            <div class="modal-footer info-modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">确定</button>
+            </div>
+        </script>
+    </div>
+</div>

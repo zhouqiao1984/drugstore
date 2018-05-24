@@ -364,5 +364,29 @@ angular.module('app')
                         }]
                 }
             })
+             .state('app.drug',{
+                url: '/drug',
+                template: '<div ui-view></div>'
+            })
+            .state('app.drug.drugInfo',{
+                url: '/drugInfo',
+                templateUrl: 'tpl/drugstore/drugInfo.html',
+                resolve: {
+                    deps: ['uiLoad',
+                        function (uiLoad) {
+                            return uiLoad.load(['js/controller_ds/drugInfo.js']);
+                        }]
+                }
+            })
+             .state('app.drug.addDrug', {
+                url: '/addDrug',
+                templateUrl: 'tpl/drugstore/add-drug.html',
+                resolve: {
+                    deps: ['uiLoad',
+                        function (uiLoad) {
+                            return uiLoad.load(['js/controller_ds/add-drug.js']);
+                        }]
+                }
+            })
     }
 ]);

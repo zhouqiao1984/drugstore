@@ -1,11 +1,11 @@
 'use strict';
 
-app.controller('FetchAdminCtrl',
+app.controller('FetchDrugInfoCtrl',
     function ($scope, $resource , $http,  $modal, $log) {
 
         $scope.orderProp = "createDate";
 
-        $scope.admins = [];
+        $scope.drugs = [];
         $scope.start = 0;
         $scope.maxSize = 10;
         $scope.totalItems = 0;
@@ -18,30 +18,31 @@ app.controller('FetchAdminCtrl',
 
         var init = function () {
             $http({
-                url: '/admins',
+                url: '/drugs',
                 method: 'POST',
                 dataType: 'json',
                 data: $scope.pager
             })
                 .success(function (data) {
                     console.log(data);
-                    $scope.admins = data.data;
+                    $scope.drugs = data.data;
                     $scope.totalItems = data.recordsTotal;
-                    angular.forEach($scope.admins,function (admin) {
-                        console.log(admin);
-                        if(admin.userStateId == 1){
+                    angular.forEach($scope.drugs,function (drug) {
+                        console.log(drug);
+                       /* if(admin.userStateId == 1){
                             admin.state = '正常';
                         }else if(admin.userStateId == 2){
                             admin.state = '冻结';
                         }else {
                             admin.state = '异常';
-                        }
+                        }*/
                     });
                 })
                 .error(function () {
                     console.log('请求失败！');
                 })
         };
+
         init();
 
         $scope.getData = function () {
@@ -204,7 +205,7 @@ app.controller('FetchAdminCtrl',
             console.log($scope.message);
         };
 
-        $scope.editUser = function (id) {
+        $scope.editDrug = function (id) {
             //先提交数据到到后台修改，然后再重新加载数据，这时候配置信息不变
             // $scope.reloadData();
 
